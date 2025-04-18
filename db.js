@@ -1,8 +1,11 @@
-const pg = require(`pg`);
-// configure database connection
-const client = new pg.Client(
-  `postgres://joshc:Vegas0623@localhost:5432/acme_hr_db`
-);
+// Import pg
+const pg = require("pg");
 
-// Export the client 
+// Import and configure dotenv to load variables from .env file
+require("dotenv").config();
+
+// process.env.DATABASE_URL reads the value from your .env file
+const client = new pg.Client(process.env.DATABASE_URL);
+
+// Export the client
 module.exports = client;
